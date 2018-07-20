@@ -16,8 +16,8 @@ beforeAll(async () => {
   await page.setViewport({ width, height });
 });
 
-afterAll(() => {
-  browser.close();
+afterAll(async () => {
+  await browser.close();
 });
 
 describe('Search function', async () => { // must make this an async function so that "await" may work
