@@ -1,6 +1,7 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
 import styles from './gallery.css';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
 class Gallery extends React.Component {
@@ -110,35 +111,51 @@ class Gallery extends React.Component {
   render() {
     const theCarrousel = this.state.displayCarr ? (
       <div styleName="carrousel-container">
+      <ReactCSSTransitionGroup
+           transitionName="examplesssss"
+           transitionEnterTimeout={5000}
+           transitionLeaveTimeout={5000}>
         <div styleName="carrousel">
+         
           {
 
               this.state.photos.map((photo, index) => {
                 if (index >= this.state.carrBeginIndex && index <= this.state.carrEndIndex)  {
                 if (this.state.mainPhoto === photo.photo_url) {
-                  return <img onClick={() => { this.showClickedPhoto(photo.photo_url, index); }} styleName="carrousel-photo-selected" src={photo.photo_url} />;
+                  return (
+                    <div key={index}>
+                    <img  onClick={() => { this.showClickedPhoto(photo.photo_url, index); }} styleName="carrousel-photo-selected" src={photo.photo_url} />
+                    </div>
+                    );
                 } 
                  else if  (index === this.state.carrEndIndex && (index >= 8) && (this.state.photos.length - index > 1)) {
                   return (
-                    <div styleName="last-photo-holder">
+                    <div key={index} styleName="last-photo-holder">
                       <img onClick={() => { this.showClickedPhoto(photo.photo_url, index); }} styleName="carrousel-photo" src={photo.photo_url} />
                     </div>
                   );
                 } else if (index === this.state.carrBeginIndex && ((this.state.mainPhotoIndex - index) > 3)) {
                   return (
-                    <div styleName="last-photo-holder">
+                    <div key={index} styleName="last-photo-holder">
                       <img onClick={() => { this.showClickedPhoto(photo.photo_url, index); }} styleName="carrousel-photo" src={photo.photo_url} />
                     </div>
                   );
                 }
                 else /*if (index >= this.state.carrBeginIndex  && index < this.state.carrEndIndex)*/ {
-                  return <img onClick={() => { this.showClickedPhoto(photo.photo_url, index); }} styleName="carrousel-photo" src={photo.photo_url} />;
+                  return (
+                    <div key={index}> 
+                       <img  onClick={() => { this.showClickedPhoto(photo.photo_url, index); }} styleName="carrousel-photo" src={photo.photo_url} />
+                    </div>
+                    );
+                 
                 } 
               }
 
               })
               }
         </div>
+        </ReactCSSTransitionGroup>
+
       </div>
     ) : null;
     return (

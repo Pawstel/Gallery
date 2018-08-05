@@ -1,7 +1,10 @@
 .hero {
-    height: 500px;
+  height: 500px;
+  max-width: 100%;
+  flex:1;
 	display: flex;
 	justify-content: space-between;
+  margin:0;
 }
 
 .hero-buttons {

@@ -22,7 +22,7 @@ class Hero extends React.Component {
       numberOfFav: 0,
       userId: 25,
       lists: [],
-      listingId: 25,
+      listingId: 75,
       favoriteLists: [],
       favoriteListsObj: {},
       details: {},
@@ -185,6 +185,11 @@ class Hero extends React.Component {
     const imgUrl = this.state.heroUrl;
     const divStyle = {
       backgroundImage: `url(${imgUrl})`,
+      'background-size': '100%',
+      'position':'fixed',
+      'top':0,
+      'left':0,
+      'right':0
     };
 
     let modal = null;

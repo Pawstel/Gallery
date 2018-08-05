@@ -159,22 +159,33 @@ const populateListingsLists = () => {
 // to populate the listing_photos table
 // we want each listing to have 2 unique photos (1 to 200) and 13 random photos from indices 201 to 266
 const populateListingPhotos = () => {
-  const photoDescriptions = ['comfy bed', 'spacious room', 'where the cool ones stay', 'presidential suite', 'glamorous bed'];
+  const photoDescriptions = ['comfy bed', 'spacious room', 'where the cool ones stay', 'presidential suite', 'glamorous bed', 'fun every day', 'woofderful', 'miawjestic sight', 'mewtiful', 'gllamarous', 'whale-built', 'open air', 'cozy', 'brand new', 'vibrant'];
   let photoCount = 1;
+  let heroCount = 1;
   let photoId = 0;
+  let theQuery = '';
+  let photoUrl = '';
   for (let i = 1; i <= 100; i += 1) {
     for (let x = 0; x < 15; x += 1) {
-      const index = Math.floor(Math.random() * 5); // up to 4
+      const index = Math.floor(Math.random() * 15); // up to 14
       const description = photoDescriptions[index];
 
-      if (x === 0 || x === 1) {
+      if (x === 0) {
+        photoUrl =  `https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/listings/hero${heroCount}.jpg`
+        heroCount += 1;
+        theQuery = `INSERT INTO listing_photos (photo_description, photo_url, photo_listing_id) VALUES ('${description}', '${photoUrl}', ${i})`;
+      }
+      else if (x === 1 || x === 2) {
         photoId = photoCount;
         photoCount += 1;
+        photoUrl = `https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/listings/entry${photoId}.jpg`;
+        theQuery = `INSERT INTO listing_photos (photo_description, photo_url, photo_listing_id) VALUES ('${description}', '${photoUrl}', ${i})`;
       } else {
         photoId = Math.floor(Math.random() * (266 - 200 + 1) + 200);
+        photoUrl = `https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/listings/entry${photoId}.jpg`;
+        theQuery = `INSERT INTO listing_photos (photo_description, photo_url, photo_listing_id) VALUES ('${description}', '${photoUrl}', ${i})`;
       }
-      const photoUrl = `https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/listings/entry${photoId}.jpg`;
-      const theQuery = `INSERT INTO listing_photos (photo_description, photo_url, photo_listing_id) VALUES ('${description}', '${photoUrl}', ${i})`;
+       
       connection.query(theQuery, (err, res) => {
         if (err) {
           console.log('Error in populating the listings table ', err);
