@@ -22,7 +22,7 @@ class Hero extends React.Component {
       numberOfFav: 0,
       userId: 25,
       lists: [],
-      listingId: 25,
+      listingId: 27,
       favoriteLists: [],
       favoriteListsObj: {},
       details: {},
