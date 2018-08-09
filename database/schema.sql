@@ -6,8 +6,6 @@ USE hero;
 CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT,
   user_name VARCHAR(30) NOT NULL,
-  user_membership_date DATE NOT NULL,
-  user_photo_url VARCHAR(250) NOT NULL,
   PRIMARY KEY(id)
 );
 
@@ -19,8 +17,6 @@ CREATE TABLE lists (
   PRIMARY KEY(id),
   FOREIGN KEY(list_user_id) REFERENCES users(id)
 );
-
-
 
 CREATE TABLE listings (
   id INT NOT NULL AUTO_INCREMENT,

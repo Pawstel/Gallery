@@ -19,7 +19,7 @@ class Share extends React.Component {
       <div styleName="share-container">
         <div styleName="share">
           <div styleName="xbutton-container">
-            <img styleName="xbutton" onClick={() => { this.props.onClick(1); }} src="https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/static-assets/blackx.png" />
+            <img styleName="xbutton" onClick={() => { this.props.onClick(1); }} src="https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/static/blackx.png" />
           </div>
 
           <div styleName="title-container">
@@ -38,7 +38,7 @@ class Share extends React.Component {
             <div styleName="list">
 
               <div styleName="list-item">
-                <img styleName="list-item-photo" src="https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/static-assets/facebook.png" />
+                <img styleName="list-item-photo" src="https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/static/facebook.png" />
                 <div styleName="list-item-text">
                   {' '}
 Facebook
@@ -47,7 +47,7 @@ Facebook
               </div>
 
               <div styleName="list-item">
-                <img styleName="list-item-photo" src="https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/static-assets/twitter.png" />
+                <img styleName="list-item-photo" src="https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/static/twitter.png" />
                 <div styleName="list-item-text">
                   {' '}
 Twitter
@@ -56,7 +56,7 @@ Twitter
               </div>
 
               <div styleName="list-item">
-                <img styleName="list-item-email-photo" src="https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/static-assets/email.png" />
+                <img styleName="list-item-email-photo" src="https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/static/email.png" />
                 <div styleName="list-item-text">
                   {' '}
 Email
@@ -65,7 +65,7 @@ Email
               </div>
 
               <div styleName="list-item">
-                <img styleName="list-item-photo" src="https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/static-assets/messenger.png" />
+                <img styleName="list-item-photo" src="https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/static/messenger.png" />
                 <div styleName="list-item-text">
                   {' '}
 Messenger
@@ -74,7 +74,7 @@ Messenger
               </div>
 
               <div styleName="list-item">
-                <img styleName="list-item-photo" src="https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/static-assets/copy.png" />
+                <img styleName="list-item-photo" src="https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/static/copy.png" />
                 <div styleName="list-item-text">
                   {' '}
 Copy Link
@@ -83,7 +83,7 @@ Copy Link
               </div>
 
               <div styleName="list-item-last">
-                <img styleName="list-item-photo" src="https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/static-assets/embed.png" />
+                <img styleName="list-item-photo" src="https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/static/embed.png" />
                 <div styleName="list-item-text">
                   {' '}
 Embed

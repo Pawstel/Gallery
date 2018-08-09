@@ -15,7 +15,7 @@ class Gallery extends React.Component {
       carrEndIndex: 8,
       displayCarr: true,
       detailedMessage: 'Hide photo list',
-      triangleSymbol: 'https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/static-assets/downtringle.png',
+      triangleSymbol: 'https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/static/downtriangle.png',
     };
     this.updateCarrousel = this.updateCarrousel.bind(this);
   }
@@ -42,8 +42,9 @@ class Gallery extends React.Component {
   }
 
   showNextPhoto() {
+
     let newIndex = 0;
-    if (this.state.mainPhotoIndex === 14) {
+    if (this.state.mainPhotoIndex === (this.state.photos.length - 1)) {
       newIndex = 0;
     } else {
       newIndex = this.state.mainPhotoIndex + 1;
@@ -53,17 +54,18 @@ class Gallery extends React.Component {
         this.updateCarrousel();
       });
     });
+
   }
 
   showPrevPhoto() {
     let newIndex = 0;
     if (this.state.mainPhotoIndex === 0) {
-      newIndex = 14;
+      newIndex = (this.state.photos.length - 1);
     } else {
       newIndex = this.state.mainPhotoIndex - 1;
     }
     this.setState({ mainPhotoIndex: newIndex }, () => {
-      this.setState({ mainPhoto: this.props.galleryPhotos[newIndex].photo_url }, () => {
+      this.setState({ mainPhoto: this.props.galleryPhotos[newIndex].photo_url}, () => {
         this.updateCarrousel();
       });
     });
@@ -75,7 +77,7 @@ class Gallery extends React.Component {
         this.updateCarrousel();
       });
     });
-    
+
     console.log('clicked ', newMainPhoUrl, newMainPhotoIndex);
   }
 
@@ -117,7 +119,7 @@ class Gallery extends React.Component {
                 if (index >= this.state.carrBeginIndex && index <= this.state.carrEndIndex)  {
                 if (this.state.mainPhoto === photo.photo_url) {
                   return <img onClick={() => { this.showClickedPhoto(photo.photo_url, index); }} styleName="carrousel-photo-selected" src={photo.photo_url} />;
-                } 
+                }
                  else if  (index === this.state.carrEndIndex && (index >= 8) && (this.state.photos.length - index > 1)) {
                   return (
                     <div styleName="last-photo-holder">
@@ -133,7 +135,7 @@ class Gallery extends React.Component {
                 }
                 else /*if (index >= this.state.carrBeginIndex  && index < this.state.carrEndIndex)*/ {
                   return <img onClick={() => { this.showClickedPhoto(photo.photo_url, index); }} styleName="carrousel-photo" src={photo.photo_url} />;
-                } 
+                }
               }
 
               })
@@ -144,13 +146,13 @@ class Gallery extends React.Component {
     return (
       <div styleName="gallery">
         <div styleName="xbutton-container">
-          <img onClick={this.props.onClick} src="https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/static-assets/xsymbol.png" styleName="xbutton" />
+          <img onClick={this.props.onClick} src="https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/static/xsymbol.png" styleName="xbutton" />
         </div>
 
         <div styleName="prevnext-container">
-          <img onClick={this.showPrevPhoto.bind(this)} styleName="prevnext-image" src="https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/static-assets/prevsymbol.png" />
+          <img onClick={this.showPrevPhoto.bind(this)} styleName="prevnext-image" src="https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/static/prevsymbol.png" />
           <img onClick={this.showNextPhoto.bind(this)} styleName="main-image" src={this.state.mainPhoto} />
-          <img onClick={this.showNextPhoto.bind(this)} styleName="prevnext-image" src="https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/static-assets/nextsymbol.png" />
+          <img onClick={this.showNextPhoto.bind(this)} styleName="prevnext-image" src="https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/static/nextsymbol.png" />
         </div>
 
         <div onMouseEnter={this.showCarrousel.bind(this)} styleName="details-container">
