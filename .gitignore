@@ -4,3 +4,4 @@ database/Populator.js
 .env
 *.csv
 client/dist/bundle.js
+database/csvFolder
