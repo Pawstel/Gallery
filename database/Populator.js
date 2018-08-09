@@ -1,5 +1,5 @@
 // model to populate database
-const connection = require('./index.js');
+// const connection = require('./index.js');
 
 // to populate the users table
 const populateUsers = () => {
@@ -14,14 +14,16 @@ const populateUsers = () => {
     const userName = userNames[rand0and15];
     const userPhotoUrl = `https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/listings/user${rand0and15}.jpg`;
 
-    const theQuery = `INSERT INTO users (user_name, user_membership_date, user_photo_url) VALUES ('${userName}', '${date}', '${userPhotoUrl}')`;
-    connection.query(theQuery, (err, res) => {
-      if (err) {
-        console.log('Error in populating the users table', err);
-      } else {
-        console.log('Success in populating the users table', res);
-      }
-    });
+    const theQuery = `INSERT INTO users (user_name, user_membership_date, user_photo_url) VALUES ('${userName}', '${date}', '${userPhotoUrl}');`;
+
+    console.log(theQuery);
+    // connection.query(theQuery, (err, res) => {
+    //   if (err) {
+    //     console.log('Error in populating the users table', err);
+    //   } else {
+    //     console.log('Success in populating the users table', res);
+    //   }
+    // });
   }
 };
 
@@ -34,14 +36,16 @@ const populateLists = () => {
     // some users will have a list by default and others will not
     const listIndex = Math.floor(Math.random() * 5); // up to index 4
     const listName = listNames[listIndex];
-    theQuery = `INSERT INTO lists (list_name, list_user_id) VALUES ('${listName}', ${i})`;
-    connection.query(theQuery, (err, res) => {
-      if (err) {
-        console.log('Error in populating the lists table ', err);
-      } else {
-        console.log('Success in populating the lists table ', res);
-      }
-    });
+    theQuery = `INSERT INTO lists (list_name, list_user_id) VALUES ('${listName}', ${i});`;
+
+    console.log(theQuery);
+    // connection.query(theQuery, (err, res) => {
+    //   if (err) {
+    //     console.log('Error in populating the lists table ', err);
+    //   } else {
+    //     console.log('Success in populating the lists table ', res);
+    //   }
+    // });
   }
 };
 
@@ -94,7 +98,7 @@ const populateListings = () => {
 
     'Gloufry has a mending economy, which is mainly supported by leatherworking, farming and herbalism. But their biggest strengths are refined baking and alchemy. However, Gloufry lacks people skilled in war.',
 
-    'Despite its strengths and weaknesses, Gloufry is most likely headed towards a horrible future under the leadership of Director Bimbik. But this remains to be seen.', 
+    'Despite its strengths and weaknesses, Gloufry is most likely headed towards a horrible future under the leadership of Director Bimbik. But this remains to be seen.',
 
     'Despite its strengths and weaknesses, Cullfield is most likely headed towards a harsh future under the leadership of Lady Gedney. But this remains to be seen.',
 
@@ -131,28 +135,32 @@ const populateListings = () => {
     const neighborhoodDesc = neighborhoodDescriptionData[rand0and9];
     const listingHostPhotoUrl = `https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/listings/host${rand0and15}.jpg`;
     const address = `${streetAdr[rand0and15]}, ${cities[rand0and15]}, ${countries[rand0and15]}`;
-    const theQuery = `INSERT INTO listings (listing_description, listing_review_average, listing_review_total, listing_host_name, listing_host_photo_url, listing_address, listing_space_description, listing_neighborhood_description) VALUE ('${listingDesc}', ${listingAverage}, ${listingTotalReviews}, '${hostName[rand0and15]}', '${listingHostPhotoUrl}', '${address}', '${spaceDesc}', '${neighborhoodDesc}' )`;
-    connection.query(theQuery, (err, res) => {
-      if (err) {
-        console.log('Error in populating the listings table ', err);
-      } else {
-        console.log('Success in populating the listings table ', res);
-      }
-    });
+    const theQuery = `INSERT INTO listings (listing_description, listing_review_average, listing_review_total, listing_host_name, listing_host_photo_url, listing_address, listing_space_description, listing_neighborhood_description) VALUE ('${listingDesc}', ${listingAverage}, ${listingTotalReviews}, '${hostName[rand0and15]}', '${listingHostPhotoUrl}', '${address}', '${spaceDesc}', '${neighborhoodDesc}' );`;
+
+    console.log(theQuery);
+    // connection.query(theQuery, (err, res) => {
+    //   if (err) {
+    //     console.log('Error in populating the listings table ', err);
+    //   } else {
+    //     console.log('Success in populating the listings table ', res);
+    //   }
+    // });
   }
 };
 
 // to populate the listing_lists table
 const populateListingsLists = () => {
   for (let i = 1; i <= 100; i += 1) {
-    const theQuery = `INSERT INTO listings_lists (listing_id, list_id) VALUES (${i}, ${i})`;
-    connection.query(theQuery, (err, res) => {
-      if (err) {
-        console.log('Error in populating the listings_list table ', err);
-      } else {
-        console.log('Success in populating the listings_list table ', res);
-      }
-    });
+    const theQuery = `INSERT INTO listings_lists (listing_id, list_id) VALUES (${i}, ${i});`;
+
+    console.log(theQuery);
+    // connection.query(theQuery, (err, res) => {
+    //   if (err) {
+    //     console.log('Error in populating the listings_list table ', err);
+    //   } else {
+    //     console.log('Success in populating the listings_list table ', res);
+    //   }
+    // });
   }
 };
 
@@ -174,14 +182,16 @@ const populateListingPhotos = () => {
         photoId = Math.floor(Math.random() * (266 - 200 + 1) + 200);
       }
       const photoUrl = `https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/listings/entry${photoId}.jpg`;
-      const theQuery = `INSERT INTO listing_photos (photo_description, photo_url, photo_listing_id) VALUES ('${description}', '${photoUrl}', ${i})`;
-      connection.query(theQuery, (err, res) => {
-        if (err) {
-          console.log('Error in populating the listings table ', err);
-        } else {
-          console.log('Success in populating the listings table ', res);
-        }
-      });
+      const theQuery = `INSERT INTO listing_photos (photo_description, photo_url, photo_listing_id) VALUES ('${description}', '${photoUrl}', ${i});`;
+
+      console.log(theQuery);
+      // connection.query(theQuery, (err, res) => {
+      //   if (err) {
+      //     console.log('Error in populating the listings table ', err);
+      //   } else {
+      //     console.log('Success in populating the listings table ', res);
+      //   }
+      // });
     }
   }
 };
@@ -193,4 +203,4 @@ populateLists();
 populateListings();
 populateListingsLists();
 populateListingPhotos();
-connection.end(); // so circleCi does not keep spinning up
+// connection.end(); // so circleCi does not keep spinning up
