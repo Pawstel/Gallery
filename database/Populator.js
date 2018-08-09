@@ -154,7 +154,7 @@ const populateListings = () => {
   const listingDesc = populateListingDescriptionsTable();
   const spaceDesc = spaceDescriptionData[Math.floor(Math.random() * spaceDescriptionData.length)];
   const neighborhoodDesc = neighborhoodDescriptionData[Math.floor(Math.random() * neighborhoodDescriptionData.length)];
-  const listingHostPhotoUrl = `https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/gallery/${Math.floor(Math.random() * AWSImgCount)}.jpeg`;
+  const listingHostPhotoUrl = `https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/gallery/${Math.floor(Math.random() * AWSImgCount) + 1}.jpeg`;
   const address = `${streetAdr[Math.floor(Math.random() * streetAdr.length)]}, ${cities[Math.floor(Math.random() * cities.length)]}, ${countries[Math.floor(Math.random() * countries.length)]}`;
   const theQuery = `${listingAverage}, ${listingTotalReviews}, ${hostName[rand0and15]}, ${address}, ${listingHostPhotoUrl}, ${listingDesc}, ${spaceDesc}, ${neighborhoodDesc}`; //listing_description, listing_review_average, listing_review_total, listing_host_name, listing_host_photo_url, listing_address, listing_space_description, listing_neighborhood_description
 

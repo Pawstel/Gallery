@@ -24,20 +24,19 @@ const createCSV = (catOpt = 0) => {
   //   writer.write({ username: prefixes[prefixRand] + firstNames[firstRand] + lastNames[lastRand] + locations[locationRand], id: i + 1 });
   // }
 
-  for (let i = 0; i < 1; i += 1) {
-    for (let j = 0; j < 1; j += 1) {
-      for (let k = 0; k < 1; k += 1) {
+  // for (let i = 0; i < 1; i += 1) {
+  //   for (let j = 0; j < 1; j += 1) {
+  //     for (let k = 0; k < 1; k += 1) {
 
-  // for (let i = 0; i < prefixes.length; i += 1) {
-  //   for (let j = 0; j < firstNames.length; j += 1) {
-  //     for (let k = 0; k < lastNames.length; k += 1) {
-        if(!catOpt) {
-          catOpt = 0;
-        } else {
-          catOpt = 50;
-        }
-        for (let l = 0 + catOpt; l < 50 + catOpt; l += 1) {
-          console.log(`${prefixes[i]} ${firstNames[j]} ${lastNames[k]} ${locations[l]}, ${JPpop.populateListings()}`);
+  for (let i = 0; i < prefixes.length; i += 1) {
+    for (let j = 0; j < firstNames.length; j += 1) {
+      for (let k = 0; k < lastNames.length; k += 1) {
+        catOpt *= 25;
+
+        for (let l = 75; l < 100; l += 1) {
+
+          let idxCalc = 1 + (3 * 2500000) + (l % 25) + (k * 25) + (j * (lastNames.length * 25)) + (i * (firstNames.length * (lastNames.length * 25)));
+          console.log(`${idxCalc}, ${prefixes[i]} ${firstNames[j]} ${lastNames[k]} ${locations[l]}, ${JPpop.populateListings()}`);
         }
       }
     }
@@ -46,4 +45,4 @@ const createCSV = (catOpt = 0) => {
   // console.log('Done');
 };
 
-createCSV();
+createCSV(1);
