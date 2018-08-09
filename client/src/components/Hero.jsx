@@ -10,6 +10,15 @@ import styles from './hero.css';
 class Hero extends React.Component {
   constructor(props) {
     super(props);
+
+    let locSplit = window.location.pathname.split('/');
+    let idParam;
+    for(let i = 0; i < locSplit.length; i++) {
+      if(locSplit[i] === 'pawstel'){
+        idParam = parseInt(locSplit[i+1])
+      }
+    }
+
     this.state = {
       showGalleryModal: false,
       showShareModal: false,
@@ -22,11 +31,12 @@ class Hero extends React.Component {
       numberOfFav: 0,
       userId: 25,
       lists: [],
-      listingId: 27,
+      listingId: idParam || 1,
       favoriteLists: [],
       favoriteListsObj: {},
-      details: {},
+      details: {}
     };
+
 
     this.handleShowGallery = this.handleShowGallery.bind(this);
     this.handleHideGallery = this.handleHideGallery.bind(this);
@@ -37,9 +47,11 @@ class Hero extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this);
     this.getListingPhotos();
     this.getListsOfListing();
     this.getListingDetails();
+
   }
 
   handleShowGallery() {

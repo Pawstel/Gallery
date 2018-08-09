@@ -13,10 +13,19 @@ app.use((req, res, next) => {
   next();
 });
 
+//CORS
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // access the static files
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use(bodyParser.json());
+
+app.use('/pawstel/:id', express.static(path.join(__dirname, '../client/dist')));
 
 app.get('/listings/:listing_id/photos', (req, res) => {
   const listingId = req.params.listing_id;
