@@ -209,8 +209,8 @@ const populateListingPhotos = (i) => {
     //   photoId = Math.floor(Math.random() * (266 - 200 + 1) + 200);
     // }
     const photoUrl = `https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/gallery/${imgNum}.jpeg`;
-    // const theQuery = `'${description}', '${photoUrl}', ${i}`; //LISTINGS_PHOTOS: photo_description, photo_url, photo_listing_id
-    const theQuery = `INSERT INTO listing_photos (photo_description, photo_url, photo_listing_id) VALUES ('${description}', '${photoUrl}', ${i});`; //LISTINGS_PHOTOS: photo_description, photo_url, photo_listing_id
+    const theQuery = `'${description}', '${photoUrl}', ${i}`; //LISTINGS_PHOTOS: photo_description, photo_url, photo_listing_id
+    // const theQuery = `INSERT INTO listing_photos (photo_description, photo_url, photo_listing_id) VALUES ('${description}', '${photoUrl}', ${i});`; //LISTINGS_PHOTOS: photo_description, photo_url, photo_listing_id
 
     console.log(theQuery);
     // connection.query(theQuery, (err, res) => {

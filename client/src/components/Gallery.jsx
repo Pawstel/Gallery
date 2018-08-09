@@ -15,7 +15,7 @@ class Gallery extends React.Component {
       carrEndIndex: 8,
       displayCarr: true,
       detailedMessage: 'Hide photo list',
-      triangleSymbol: 'https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/static/downtringle.png',
+      triangleSymbol: 'https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/static/downtriangle.png',
     };
     this.updateCarrousel = this.updateCarrousel.bind(this);
   }
