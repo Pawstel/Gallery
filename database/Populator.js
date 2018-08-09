@@ -193,7 +193,12 @@ const populateListingPhotos = (i) => {
   // let photoId = 0;
   // for (let i = 1; i <= 100; i += 1) {
   let imgArr = [...Array(115).keys()];
-  for (let x = 0; x < 15; x += 1) {
+  let imgRuns = Math.ceil(Math.random() * 15);
+  if(imgRuns < 6) {
+    let rnJesus = Math.floor(Math.random() * 10);
+    if(rnJesus) { imgRuns *= 2;}
+  }
+  for (let x = 0; x < imgRuns; x += 1) {
     const index = Math.floor(Math.random() * 5); // up to 4
     const description = photoDescriptions[index];
     let imgNum = (imgArr.splice(Math.floor(Math.random() * imgArr.length), 1))[0] + 1;
