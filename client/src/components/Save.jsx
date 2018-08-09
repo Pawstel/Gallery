@@ -208,7 +208,7 @@ Create
       topPart = (
         <div styleName="top-part-container">
           <div styleName="xbutton-container">
-            <img styleName="xbutton" onClick={() => { this.props.onClick(1); }} src="https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/static-assets/blackx.png" />
+            <img styleName="xbutton" onClick={() => { this.props.onClick(1); }} src="https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/static/blackx.png" />
           </div>
 
           <div styleName="title-container">
@@ -251,7 +251,7 @@ Save to list
       topPart = null;
       dropSymbol = (
         <div onClick={this.handleShowTopPart.bind(this)}>
-          <img styleName="footer-drop-symbol" src="https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/static-assets/drop.png" />
+          <img styleName="footer-drop-symbol" src="https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/static/drop.png" />
         </div>
       );
     }
@@ -331,9 +331,9 @@ Save to list
                   {
 		               this.state.ratings.map((rating) => {
 		               	if (rating === 1) {
-		               		return <img styleName="paw" src="https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/static-assets/full.png" />;
+		               		return <img styleName="paw" src="https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/static/full.png" />;
 		               	} if (rating === 0) {
-		               		return <img styleName="paw" src="https://s3-us-west-1.amazonaws.com/hackreactor-fec-hero/static-assets/grey.png" />;
+		               		return <img styleName="paw" src="https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/static/grey.png" />;
 		               	}
 		               })
 		             }
