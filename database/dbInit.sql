@@ -33,7 +33,6 @@ CREATE TABLE listings (
   listing_space_description TEXT,
   listing_neighborhood_description TEXT,
   PRIMARY KEY(id)
-
 );
 
 

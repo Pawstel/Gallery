@@ -10,7 +10,7 @@ const lastNames = ['Farrell\\\'s', 'DuBuque\\\'s', 'Kiehn\\\'s', 'Swaniawski\\\'
 
 const locations = ['Ashy Pawstel', 'Black Pawstel', 'Blue Pawstel', 'Gray Pawstel', 'Green Pawstel', 'Icy Pawstel', 'Lemon Pawstel', 'Mango Pawstel', 'Orange Pawstel', 'Purple Pawstel', 'Red Pawstel', 'Salmon Pawstel', 'White Pawstel', 'Yellow Pawstel', 'Agreeable Pawstel', 'Ambitious Pawstel', 'Brave Pawstel', 'Calm Pawstel', 'Delightful Pawstel', 'Eager Pawstel', 'Faithful Pawstel', 'Gentle Pawstel', 'Happy Pawstel', 'Jolly Pawstel', 'Kind Pawstel', 'Lively Pawstel', 'Nice Pawstel', 'Obedient Pawstel', 'Polite Pawstel', 'Proud Pawstel', 'Silly Pawstel', 'Thankful Pawstel', 'Victorious Pawstel', 'Witty Pawstel', 'Wonderful Pawstel', 'Zealous Pawstel', 'Big Pawstel', 'Colossal Pawstel', 'Fat Pawstel', 'Gigantic Pawstel', 'Great Pawstel', 'Huge Pawstel', 'Immense Pawstel', 'Large Pawstel', 'Little Pawstel', 'Mammoth Pawstel', 'Massive Pawstel', 'Microscopic Pawstel', 'Miniature Pawstel', 'Petite Pawstel', 'Puny Pawstel', 'Scrawny Pawstel', 'Short Pawstel', 'Small Pawstel', 'Tall Pawstel', 'Teeny Pawstel', 'Tiny Pawstel', 'Ancient Pawstel', 'Brief Pawstel', 'Early Pawstel', 'Fast Pawstel', 'Futuristic Pawstel', 'Late Pawstel', 'Long Pawstel', 'Modern Pawstel', 'Old Pawstel', 'Old-fashioned Pawstel', 'Prehistoric Pawstel', 'Quick Pawstel', 'Rapid Pawstel', 'Short Pawstel', 'Slow Pawstel', 'Swift Pawstel', 'Young Pawstel', 'Breezy Pawstel', 'Cool Pawstel', 'Cuddly Pawstel', 'Damp Pawstel', 'Fluffy Pawstel', 'Warm Pawstel', 'Wooden Pawstel', 'Acidic Pawstel', 'Bitter Pawstel', 'Cool Pawstel', 'Creamy Pawstel', 'Delicious Pawstel', 'Disgusting Pawstel', 'Fresh Pawstel', 'Greasy Pawstel', 'Juicy Pawstel', 'Hot Pawstel', 'Moldy Pawstel', 'Nutritious Pawstel', 'Nutty Pawstel', 'Putrid Pawstel', 'Rancid Pawstel', 'Ripe Pawstel', 'Rotten Pawstel', 'Salty Pawstel', 'Savory Pawstel'];
 
-const createCSV = (catOpt = 0) => {
+const createCSV = () => {
   // fileName = fileName || 'data.csv';
   // writer.pipe(fs.createWriteStream(fileName));
   // for (let i = 0; i < 10000000; i += 1) {
@@ -31,12 +31,41 @@ const createCSV = (catOpt = 0) => {
   for (let i = 0; i < prefixes.length; i += 1) {
     for (let j = 0; j < firstNames.length; j += 1) {
       for (let k = 0; k < lastNames.length; k += 1) {
-        catOpt *= 25;
+        for (let l = 0; l < 25; l += 1) {
 
+          // let idxCalc = 1 + (/*RUNS:*/ 0 * 2500000) + (l) + (k * 100) + (j * (lastNames.length * 100)) + (i * (firstNames.length * (lastNames.length * 100))); // ${idxCalc},
+          // console.log(`${prefixes[i]} ${firstNames[j]} ${lastNames[k]} ${locations[l]}, ${JPpop.populateListings()}`);
+          // console.log(JPpop.populateUsers());
+          // console.log(JPpop.populateLists(idxCalc));
+          // console.log(JPpop.populateListingsLists(idxCalc));
+          // JPpop.populateListingPhotos(idxCalc);
+        }
+      }
+    }
+  }
+  for (let i = 0; i < prefixes.length; i += 1) {
+    for (let j = 0; j < firstNames.length; j += 1) {
+      for (let k = 0; k < lastNames.length; k += 1) {
+        for (let l = 25; l < 50; l += 1) {
+          // console.log(`${prefixes[i]} ${firstNames[j]} ${lastNames[k]} ${locations[l]}, ${JPpop.populateListings()}`);
+        }
+      }
+    }
+  }
+  for (let i = 0; i < prefixes.length; i += 1) {
+    for (let j = 0; j < firstNames.length; j += 1) {
+      for (let k = 0; k < lastNames.length; k += 1) {
+        for (let l = 50; l < 75; l += 1) {
+          // console.log(`${prefixes[i]} ${firstNames[j]} ${lastNames[k]} ${locations[l]}, ${JPpop.populateListings()}`);
+        }
+      }
+    }
+  }
+  for (let i = 0; i < prefixes.length; i += 1) {
+    for (let j = 0; j < firstNames.length; j += 1) {
+      for (let k = 0; k < lastNames.length; k += 1) {
         for (let l = 75; l < 100; l += 1) {
-
-          let idxCalc = 1 + (3 * 2500000) + (l % 25) + (k * 25) + (j * (lastNames.length * 25)) + (i * (firstNames.length * (lastNames.length * 25)));
-          console.log(`${idxCalc}, ${prefixes[i]} ${firstNames[j]} ${lastNames[k]} ${locations[l]}, ${JPpop.populateListings()}`);
+          // console.log(`${prefixes[i]} ${firstNames[j]} ${lastNames[k]} ${locations[l]}, ${JPpop.populateListings()}`);
         }
       }
     }
@@ -45,4 +74,11 @@ const createCSV = (catOpt = 0) => {
   // console.log('Done');
 };
 
-createCSV(1);
+createCSV();
+
+
+  // populateUsers : populateUsers,
+  // populateLists : populateLists,
+  // populateListings : populateListings,
+  // populateListingsLists : populateListingsLists,
+  // populateListingPhotos : populateListingPhotos

@@ -5,3 +5,11 @@ database/Populator.js
 *.csv
 client/dist/bundle.js
 database/csvFolder
+database/csvFolder/listing_lists
+database/csvFolder/listing_photos
+database/csvFolder/listings
+database/csvFolder/lists
+database/csvFolder/users
+
+
+
