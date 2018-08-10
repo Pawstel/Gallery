@@ -17,7 +17,31 @@
 
 ## Usage
 
-> Some usage instructions
+CRUD listings endpoints:
+Create: POST: localhost:3000/listings
+  takes: data: {
+    listing_review_average : INT,
+    listing_review_total : INT,
+    listing_host_name : VARCHAR(50),
+    listing_address : TEXT,
+    listing_host_photo_url : VARCHAR(255),
+    listing_description : TEXT,
+    listing_space_description : TEXT,
+    listing_neighborhood_description : TEXT
+  }
+  
+  Read: GET: localhost:3000/listings
+    returns: [20 last created {listings}]
+
+  Read: GET: localhost:3000/listings/:listing_id
+    returns: {listing object}
+
+  Update: PUT: localhost:3000/listings/:listing_id
+    takes: newListingData: {listingObj}
+  
+  Delete: DELETE: localhost:3000/listings/:listing_id
+    deletes: {listing @listing_id}
+
 
 ## Requirements
 
