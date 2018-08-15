@@ -1,10 +1,37 @@
 // model to populate database
 // const connection = require('./index.js');
+const fs = require('fs');
+var wstream = fs.createWriteStream('test.csv');
+
+
 
 const AWSImgCount = 202;
 
+const genFavLists = () => {
+  let count = Math.ceil(Math.random() * 5);
+  let favs = [];
+  listNames = ['My fav list!', 'Practical wuff houses', 'Da bestest', 'Super classy', '100% Chic'];
+  for(let i = 0; i < count; i++) {
+    let name = listNames.splice(Math.floor(Math.random()*listNames.length), 1)[0];
+    let favListing = `{list_name:'${name}', list_ids:{`;
+    let rng = Math.ceil(Math.random() * 12);
+    let favListIds = [];
+    for(let j = 0; j < rng; j++) {
+
+      favListIds.push(Math.ceil(Math.random()*10000000));
+    }
+     favListing += favListIds.join(', ') + '}}'
+    favs.push(favListing);
+  }
+
+  favs.join(', ');
+  favs = '[' +favs + ']'
+  return favs;
+}
+
+
 // to populate the users table
-const populateUsers = () => {
+const populateUsers = (num) => {
   // for (let i = 1; i <= 100; i += 1) {
   const userNames = ['Neon', 'Omega', 'Kookaburra', 'RagingBull', 'Asylum', 'Flurry', 'Ollie', 'Scoobie', 'Brave', 'Guaymas', 'Pinochio', 'Danana', 'Pepita', 'Padila', 'Ninja', 'Bonza'];
     // const years = ['2018', '2017', '2016', '2015', '2014'];
@@ -14,9 +41,12 @@ const populateUsers = () => {
     // const date = `${years[dateIndex]}-${months[dateIndex]}-${days[dateIndex]}`;
   // const rand0and15 = Math.floor(Math.random() * 16); // up to index 15
   const userName = userNames[Math.floor(Math.random() * userNames.length)];
-  const userPhotoUrl = `https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/static/avatarPlaceHolder.jpg`;
+  let imgNum = Math.ceil(Math.random() * AWSImgCount);
+  const userPhotoUrl = `https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/gallery/${imgNum}.jpeg`;
+  // const userPhotoUrl = `https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/static/avatarPlaceHolder.jpg`;
 
-  const theQuery = `${userName}, ${userPhotoUrl}`; //removed- ${date}, USERS: user_name, user_membership_date, user_photo_url
+  // const theQuery = `${num}|${genFavLists()}`;
+  const theQuery = `${num}|'${userName}'|'${userPhotoUrl}'|${genFavLists()}|{${num}}`; //removed- ${date}, USERS: user_name, user_membership_date, user_photo_url
 
   return theQuery;
     // connection.query(theQuery, (err, res) => {
@@ -28,7 +58,6 @@ const populateUsers = () => {
     // });
   // }
 };
-
 
 // to populate the lists table
 const populateLists = (i) => {
@@ -55,7 +84,7 @@ const populateLists = (i) => {
 
 
 // to populate the listings table
-const populateListings = () => {
+const populateListings = (id) => {
   const hostName = ['Neon', 'Omega', 'Kookaburra', 'RagingBull', 'Asylum', 'Flurry', 'Ollie', 'Scoobie', 'Brave', 'Guaymas', 'Pinochio', 'Danana', 'Pepita', 'Padila', 'Ninja', 'Bonza'];
 
   const mockListingData = {
@@ -154,9 +183,11 @@ const populateListings = () => {
   const listingDesc = populateListingDescriptionsTable();
   const spaceDesc = spaceDescriptionData[Math.floor(Math.random() * spaceDescriptionData.length)];
   const neighborhoodDesc = neighborhoodDescriptionData[Math.floor(Math.random() * neighborhoodDescriptionData.length)];
-  const listingHostPhotoUrl = `https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/gallery/${Math.floor(Math.random() * AWSImgCount) + 1}.jpeg`;
-  const address = `${streetAdr[Math.floor(Math.random() * streetAdr.length)]}- ${cities[Math.floor(Math.random() * cities.length)]}- ${countries[Math.floor(Math.random() * countries.length)]}`;
-  const theQuery = `${listingAverage}, ${listingTotalReviews}, ${hostName[rand0and15]}, ${address}, ${listingHostPhotoUrl}, ${listingDesc}, ${spaceDesc}, ${neighborhoodDesc}`; //listing_description, listing_review_average, listing_review_total, listing_host_name, listing_host_photo_url, listing_address, listing_space_description, listing_neighborhood_description
+  // const listingHostPhotoUrl = `https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/gallery/${Math.floor(Math.random() * AWSImgCount) + 1}.jpeg`;
+  const address = `${streetAdr[Math.floor(Math.random() * streetAdr.length)]}, ${cities[Math.floor(Math.random() * cities.length)]}, ${countries[Math.floor(Math.random() * countries.length)]}`;
+  const images = [];
+
+  const theQuery = `${listingAverage}|${listingTotalReviews}|${id}|'${address}'|'${listingDesc}'|'${spaceDesc}'|'${neighborhoodDesc}'}`; //listing_description, listing_review_average, listing_review_total, listing_host_name, listing_host_photo_url, listing_address, listing_space_description, listing_neighborhood_description
 
   return theQuery;
     // connection.query(theQuery, (err, res) => {
@@ -187,18 +218,11 @@ const populateListingsLists = (i) => {
 
 // to populate the listing_photos table
 // we want each listing to have 2 unique photos (1 to 200) and 13 random photos from indices 201 to 266
-const populateListingPhotos = (i) => {
+const populateListingPhotos = (id, arr) => {
   const photoDescriptions = ['comfy bed', 'spacious room', 'where the cool ones stay', 'presidential suite', 'glamorous bed'];
-  // let photoCount = 1;
-  // let photoId = 0;
-  // for (let i = 1; i <= 100; i += 1) {
-  let imgArr = [...Array(115).keys()];
-  let imgRuns = Math.ceil(Math.random() * 15);
-  if(imgRuns < 6) {
-    let rnJesus = Math.floor(Math.random() * 10);
-    if(rnJesus) { imgRuns *= 2;}
-  }
-  for (let x = 0; x < imgRuns; x += 1) {
+  let imgArr = [...Array(AWSImgCount).keys()];
+  let imgColl = [];
+  for (let x = 0; x < arr.length; x += 1) {
     const index = Math.floor(Math.random() * 5); // up to 4
     const description = photoDescriptions[index];
     let imgNum = (imgArr.splice(Math.floor(Math.random() * imgArr.length), 1))[0] + 1;
@@ -209,10 +233,11 @@ const populateListingPhotos = (i) => {
     //   photoId = Math.floor(Math.random() * (266 - 200 + 1) + 200);
     // }
     const photoUrl = `https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/gallery/${imgNum}.jpeg`;
-    const theQuery = `'${description}', '${photoUrl}', ${i}`; //LISTINGS_PHOTOS: photo_description, photo_url, photo_listing_id
+
+    console.log(`${arr[x]}|${id}|'${description}'|'${photoUrl}'`); //LISTINGS_PHOTOS: photo_description, photo_url, photo_listing_id
     // const theQuery = `INSERT INTO listing_photos (photo_description, photo_url, photo_listing_id) VALUES ('${description}', '${photoUrl}', ${i});`; //LISTINGS_PHOTOS: photo_description, photo_url, photo_listing_id
 
-    console.log(theQuery);
+    // imgColl.push(theQuery);
     // connection.query(theQuery, (err, res) => {
     //   if (err) {
     //     console.log('Error in populating the listings photo table ', err);
@@ -221,6 +246,9 @@ const populateListingPhotos = (i) => {
     //   }
     // });
   }
+  // imgColl.join(',')
+  // imgColl = '[' + imgColl + ']';
+  // return imgColl;
   // }
 };
 
