@@ -104,7 +104,7 @@ const createCSV = () => {
           JPpop.populateListingPhotos(idxCalc, imgArr)
           totalImgCounter += imgRuns;
 
-          console.log(`${idxCalc}|'${prefixes[i]} ${firstNames[j]} ${lastNames[k]} ${locations[l]}'|${JPpop.populateListings(idxCalc)}`);
+          // console.log(`${idxCalc}|'${prefixes[i]} ${firstNames[j]} ${lastNames[k]} ${locations[l]}'|${JPpop.populateListings(idxCalc)}`);
         }
       }
     }
@@ -130,7 +130,7 @@ const createCSV = () => {
           JPpop.populateListingPhotos(idxCalc, imgArr)
           totalImgCounter += imgRuns;
 
-          console.log(`${idxCalc}|'${prefixes[i]} ${firstNames[j]} ${lastNames[k]} ${locations[l]}'|${JPpop.populateListings(idxCalc)}`);
+          // console.log(`${idxCalc}|'${prefixes[i]} ${firstNames[j]} ${lastNames[k]} ${locations[l]}'|${JPpop.populateListings(idxCalc)}`);
         }
       }
     }
