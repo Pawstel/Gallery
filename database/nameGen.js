@@ -28,30 +28,41 @@ const createCSV = () => {
   // for (let i = 0; i < 1; i += 1) {
   //   for (let j = 0; j < 1; j += 1) {
   //     for (let k = 0; k < 1; k += 1) {
-  let totalImgCounter = 1;
+  // let totalImgCounter = 1;
+  let totalFavCounter = 1;
   for (let i = 0; i < prefixes.length; i += 1) {
     for (let j = 0; j < firstNames.length; j += 1) {
       for (let k = 0; k < lastNames.length; k += 1) {
 
 
-        for (let l = 0; l < 25; l += 1) {
-          let idxCalc = 1 + (/*RUNS:*/ 0 * 2500000) + (l) + (k * 25) + (j * (lastNames.length * 25)) + (i * (firstNames.length * (lastNames.length * 25))); // ${idxCalc},
+        for (let l = 0; l < 100; l += 1) {
+          let idxCalc = 1 + (/*RUNS:*/ 0 * 2500000) + (l) + (k * 100) + (j * (lastNames.length * 100)) + (i * (firstNames.length * (lastNames.length * 100))); // ${idxCalc},
 
-          let imgRuns = Math.ceil(Math.random() * 15);
-          if(imgRuns < 6) {
-            let rnJesus = Math.floor(Math.random() * 10);
-            if(rnJesus) { imgRuns *= 2;}
-          }
-          let imgArr = [];
-          for(let m = totalImgCounter; m < totalImgCounter + imgRuns; m++) {
-            imgArr.push(m);
-          }
-          JPpop.populateListingPhotos(idxCalc, imgArr)
-          totalImgCounter += imgRuns;
+          // let imgRuns = Math.ceil(Math.random() * 15);
+          // if(imgRuns < 6) {
+          //   let rnJesus = Math.floor(Math.random() * 10);
+          //   if(rnJesus) { imgRuns *= 2;}
+          // }
+          // let imgArr = [];
+          // for(let m = totalImgCounter; m < totalImgCounter + imgRuns; m++) {
+          //   imgArr.push(m);
+          // }
+          // JPpop.populateListingPhotos(idxCalc, imgArr)
+          // totalImgCounter += imgRuns;
+
           // console.log(`${idxCalc}|'${prefixes[i]} ${firstNames[j]} ${lastNames[k]} ${locations[l]}'|${JPpop.populateListings(idxCalc)}`);
           // console.log(idxCalc);
           // console.log(currentListing)
-          // wstream.write(`${}\n`);
+
+
+          let favs = Math.floor(Math.random() * 3);
+          let favArr = [];
+          for(let m = totalFavCounter; m < totalFavCounter + favs; m++) {
+            favArr.push(m);
+          }
+          totalFavCounter += favs;
+          JPpop.genFavLists(idxCalc, favArr);
+
           // console.log(JPpop.populateUsers(idxCalc));
           // console.log(JPpop.populateLists(idxCalc));
           // console.log(JPpop.populateListingsLists(idxCalc));
@@ -64,77 +75,79 @@ const createCSV = () => {
   // for (let i = 0; i < 1; i += 1) {
   //   for (let j = 0; j < 1; j += 1) {
   //     for (let k = 0; k < 1; k += 1) {
-  for (let i = 0; i < prefixes.length; i += 1) {
-    for (let j = 0; j < firstNames.length; j += 1) {
-      for (let k = 0; k < lastNames.length; k += 1) {
-        for (let l = 25; l < 50; l += 1) {
-          let idxCalc = 1 + (/*RUNS:*/ 1 * 2500000) + (l % 25) + (k * 25) + (j * (lastNames.length * 25)) + (i * (firstNames.length * (lastNames.length * 25))); // ${idxCalc},
+  // for (let i = 0; i < prefixes.length; i += 1) {
+  //   for (let j = 0; j < firstNames.length; j += 1) {
+  //     for (let k = 0; k < lastNames.length; k += 1) {
+  //       for (let l = 25; l < 50; l += 1) {
+  //         let idxCalc = 1 + (/*RUNS:*/ 1 * 2500000) + (l % 25) + (k * 25) + (j * (lastNames.length * 25)) + (i * (firstNames.length * (lastNames.length * 25))); // ${idxCalc},
 
-          let imgRuns = Math.ceil(Math.random() * 15);
-          if(imgRuns < 6) {
-            let rnJesus = Math.floor(Math.random() * 10);
-            if(rnJesus) { imgRuns *= 2;}
-          }
-          let imgArr = [];
-          for(let m = totalImgCounter; m < totalImgCounter + imgRuns; m++) {
-            imgArr.push(m);
-          }
-          JPpop.populateListingPhotos(idxCalc, imgArr)
-          totalImgCounter += imgRuns;
-          // console.log(`${idxCalc}|'${prefixes[i]} ${firstNames[j]} ${lastNames[k]} ${locations[l]}'|${JPpop.populateListings(idxCalc)}`);
-        }
-      }
-    }
-  }
-  for (let i = 0; i < prefixes.length; i += 1) {
-    for (let j = 0; j < firstNames.length; j += 1) {
-      for (let k = 0; k < lastNames.length; k += 1) {
-        for (let l = 50; l < 75; l += 1) {
-          let idxCalc = 1 + (/*RUNS:*/ 2 * 2500000) + (l % 25) + (k * 25) + (j * (lastNames.length * 25)) + (i * (firstNames.length * (lastNames.length * 25))); // ${idxCalc},
+  //         // let imgRuns = Math.ceil(Math.random() * 15);
+  //         // if(imgRuns < 6) {
+  //         //   let rnJesus = Math.floor(Math.random() * 10);
+  //         //   if(rnJesus) { imgRuns *= 2;}
+  //         // }
+  //         // let imgArr = [];
+  //         // for(let m = totalImgCounter; m < totalImgCounter + imgRuns; m++) {
+  //         //   imgArr.push(m);
+  //         // }
+  //         // JPpop.populateListingPhotos(idxCalc, imgArr)
+  //         // totalImgCounter += imgRuns;
+  //         // console.log(`${idxCalc}|'${prefixes[i]} ${firstNames[j]} ${lastNames[k]} ${locations[l]}'|${JPpop.populateListings(idxCalc)}`);
 
-          let imgRuns = Math.ceil(Math.random() * 15);
-          if(imgRuns < 6) {
-            let rnJesus = Math.floor(Math.random() * 10);
-            if(rnJesus) { imgRuns *= 2;}
-          }
-          let imgArr = [];
-          for(let m = totalImgCounter; m < totalImgCounter + imgRuns; m++) {
-            imgArr.push(m);
-          }
-          JPpop.populateListingPhotos(idxCalc, imgArr)
-          totalImgCounter += imgRuns;
 
-          // console.log(`${idxCalc}|'${prefixes[i]} ${firstNames[j]} ${lastNames[k]} ${locations[l]}'|${JPpop.populateListings(idxCalc)}`);
-        }
-      }
-    }
-  }
-  // for (let i = 0; i < 1; i += 1) {
-  //   for (let j = 0; j < 1; j += 1) {
-  //     for (let k = 0; k < 1; k += 1) {
-  for (let i = 0; i < prefixes.length; i += 1) {
-    for (let j = 0; j < firstNames.length; j += 1) {
-      for (let k = 0; k < lastNames.length; k += 1) {
-        for (let l = 75; l < 100; l += 1) {
-          let idxCalc = 1 + (/*RUNS:*/ 3 * 2500000) + (l % 25) + (k * 25) + (j * (lastNames.length * 25)) + (i * (firstNames.length * (lastNames.length * 25))); // ${idxCalc},
+  //       }
+  //     }
+  //   }
+  // }
+  // for (let i = 0; i < prefixes.length; i += 1) {
+  //   for (let j = 0; j < firstNames.length; j += 1) {
+  //     for (let k = 0; k < lastNames.length; k += 1) {
+  //       for (let l = 50; l < 75; l += 1) {
+  //         let idxCalc = 1 + (/*RUNS:*/ 2 * 2500000) + (l % 25) + (k * 25) + (j * (lastNames.length * 25)) + (i * (firstNames.length * (lastNames.length * 25))); // ${idxCalc},
 
-          let imgRuns = Math.ceil(Math.random() * 15);
-          if(imgRuns < 6) {
-            let rnJesus = Math.floor(Math.random() * 10);
-            if(rnJesus) { imgRuns *= 2;}
-          }
-          let imgArr = [];
-          for(let m = totalImgCounter; m < totalImgCounter + imgRuns; m++) {
-            imgArr.push(m);
-          }
-          JPpop.populateListingPhotos(idxCalc, imgArr)
-          totalImgCounter += imgRuns;
+  //         let imgRuns = Math.ceil(Math.random() * 15);
+  //         if(imgRuns < 6) {
+  //           let rnJesus = Math.floor(Math.random() * 10);
+  //           if(rnJesus) { imgRuns *= 2;}
+  //         }
+  //         let imgArr = [];
+  //         for(let m = totalImgCounter; m < totalImgCounter + imgRuns; m++) {
+  //           imgArr.push(m);
+  //         }
+  //         JPpop.populateListingPhotos(idxCalc, imgArr)
+  //         totalImgCounter += imgRuns;
 
-          // console.log(`${idxCalc}|'${prefixes[i]} ${firstNames[j]} ${lastNames[k]} ${locations[l]}'|${JPpop.populateListings(idxCalc)}`);
-        }
-      }
-    }
-  }
+  //         // console.log(`${idxCalc}|'${prefixes[i]} ${firstNames[j]} ${lastNames[k]} ${locations[l]}'|${JPpop.populateListings(idxCalc)}`);
+  //       }
+  //     }
+  //   }
+  // }
+  // // for (let i = 0; i < 1; i += 1) {
+  // //   for (let j = 0; j < 1; j += 1) {
+  // //     for (let k = 0; k < 1; k += 1) {
+  // for (let i = 0; i < prefixes.length; i += 1) {
+  //   for (let j = 0; j < firstNames.length; j += 1) {
+  //     for (let k = 0; k < lastNames.length; k += 1) {
+  //       for (let l = 75; l < 100; l += 1) {
+  //         let idxCalc = 1 + (/*RUNS:*/ 3 * 2500000) + (l % 25) + (k * 25) + (j * (lastNames.length * 25)) + (i * (firstNames.length * (lastNames.length * 25))); // ${idxCalc},
+
+  //         let imgRuns = Math.ceil(Math.random() * 15);
+  //         if(imgRuns < 6) {
+  //           let rnJesus = Math.floor(Math.random() * 10);
+  //           if(rnJesus) { imgRuns *= 2;}
+  //         }
+  //         let imgArr = [];
+  //         for(let m = totalImgCounter; m < totalImgCounter + imgRuns; m++) {
+  //           imgArr.push(m);
+  //         }
+  //         JPpop.populateListingPhotos(idxCalc, imgArr)
+  //         totalImgCounter += imgRuns;
+
+  //         // console.log(`${idxCalc}|'${prefixes[i]} ${firstNames[j]} ${lastNames[k]} ${locations[l]}'|${JPpop.populateListings(idxCalc)}`);
+  //       }
+  //     }
+  //   }
+  // }
   // writer.end();
   // console.log('Done');
 };

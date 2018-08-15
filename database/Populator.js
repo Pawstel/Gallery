@@ -7,26 +7,23 @@ var wstream = fs.createWriteStream('test.csv');
 
 const AWSImgCount = 202;
 
-const genFavLists = () => {
-  let count = Math.ceil(Math.random() * 5);
-  let favs = [];
+const genFavLists = (user_id, arr) => {
   listNames = ['My fav list!', 'Practical wuff houses', 'Da bestest', 'Super classy', '100% Chic'];
-  for(let i = 0; i < count; i++) {
+  for(let i = 0; i < arr.length; i++) {
     let name = listNames.splice(Math.floor(Math.random()*listNames.length), 1)[0];
-    let favListing = `{list_name:'${name}', list_ids:{`;
     let rng = Math.ceil(Math.random() * 12);
     let favListIds = [];
     for(let j = 0; j < rng; j++) {
-
       favListIds.push(Math.ceil(Math.random()*10000000));
     }
-     favListing += favListIds.join(', ') + '}}'
-    favs.push(favListing);
+    favListIds.join(', ');
+    favListIds = '{' + favListIds + '}';
+    console.log(`${arr[i]}|${user_id}|'${name}'|${favListIds}`)
+
   }
 
-  favs.join(', ');
-  favs = '[' +favs + ']'
-  return favs;
+
+
 }
 
 
@@ -46,7 +43,7 @@ const populateUsers = (num) => {
   // const userPhotoUrl = `https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/static/avatarPlaceHolder.jpg`;
 
   // const theQuery = `${num}|${genFavLists()}`;
-  const theQuery = `${num}|'${userName}'|'${userPhotoUrl}'|${genFavLists()}|{${num}}`; //removed- ${date}, USERS: user_name, user_membership_date, user_photo_url
+  const theQuery = `${num}|'${userName}'|'${userPhotoUrl}'|{${num}}`; //removed- ${date}, USERS: user_name, user_membership_date, user_photo_url
 
   return theQuery;
     // connection.query(theQuery, (err, res) => {
@@ -255,6 +252,7 @@ const populateListingPhotos = (id, arr) => {
 
 // Invoke functions to populate the database
 module.exports = {
+  genFavLists: genFavLists,
   populateUsers : populateUsers,
   populateLists : populateLists,
   populateListings : populateListings,

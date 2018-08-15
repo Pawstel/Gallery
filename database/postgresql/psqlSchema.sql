@@ -48,3 +48,10 @@ CREATE TABLE IF NOT EXISTS listing_photos (
 -- copy listings_lists (listing_id, list_id) from '/Users/EnemyBoss/Projects/HackReactor/pawstel/Gallery/database/csvFolder/listing_lists/data1.csv' DELIMITERS ',' CSV;
 -- copy listing_photos (photo_description, photo_url, photo_listing_id) from '/Users/EnemyBoss/Projects/HackReactor/pawstel/Gallery/database/csvFolder/listing_photos/data1.csv' DELIMITERS ',' CSV;
 
+
+
+
+-- ZIP CSVs
+-- tar -cvzf psqlCSVfold.tar.gz csvFolder
+-- UNZIP CSVs
+-- gunzip -c psqlCSVfold.tar.gz | tar xvf -
