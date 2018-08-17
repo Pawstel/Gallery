@@ -49,6 +49,9 @@ CREATE TABLE IF NOT EXISTS listing_photos (
 -- copy listing_photos (photo_description, photo_url, photo_listing_id) from '/Users/EnemyBoss/Projects/HackReactor/pawstel/Gallery/database/csvFolder/listing_photos/data1.csv' DELIMITERS ',' CSV;
 
 
+CREATE INDEX photo_listing_listing_id_index ON listing_photos(photo_listing_id);
+CREATE INDEX listing_name_index ON listings(listing_name);
+
 
 
 -- ZIP CSVs
