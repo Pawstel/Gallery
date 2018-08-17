@@ -4,4 +4,12 @@ database/Populator.js
 .env
 *.csv
 client/dist/bundle.js
+*.tar
+*.gz
 database/csvFolder
+database/csvFolder/listing_lists
+database/csvFolder/listing_photos
+database/csvFolder/listings
+database/csvFolder/lists
+database/csvFolder/users
+

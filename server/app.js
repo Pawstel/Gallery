@@ -128,4 +128,35 @@ app.get('/listings/:listing_id/details', (req, res) => {
   });
 });
 
+app.get('/listings', (req, res) => {
+  console.log('CRUD REQ-LISTINGS: get');
+  // console.log(req);
+  // console.log(res);
+  res.end();
+})
+
+app.post('/listings', (req, res) => {
+  console.log('CRUD REQ-LISTINGS: post');
+  // console.log(req);
+  // console.log(res);
+  res.end();
+
+})
+
+app.put('/listings/:listing_id', (req, res) => {
+  console.log('CRUD REQ-LISTINGS: put');
+  // console.log(req);
+  // console.log(res);
+  res.end();
+
+})
+
+app.delete('/listings/:listing_id', (req, res) => {
+  console.log('CRUD REQ-LISTINGS: delete');
+  // console.log(req);
+  // console.log(res);
+  res.end();
+
+})
+
 module.exports = app;
