@@ -231,7 +231,8 @@ const populateListingPhotos = (id, arr) => {
     // }
     const photoUrl = `https://s3-us-west-1.amazonaws.com/sdc-pawstel-images/gallery/${imgNum}.jpeg`;
 
-    console.log(`${arr[x]}|${id}|'${description}'|'${photoUrl}'`); //LISTINGS_PHOTOS: photo_description, photo_url, photo_listing_id
+    console.log(`${description}|${photoUrl}|${id}`); //LISTINGS_PHOTOS: photo_description, photo_url, photo_listing_id
+    //          ^^ ADD ${arr[x]}| FOR CASSANDRA
     // const theQuery = `INSERT INTO listing_photos (photo_description, photo_url, photo_listing_id) VALUES ('${description}', '${photoUrl}', ${i});`; //LISTINGS_PHOTOS: photo_description, photo_url, photo_listing_id
 
     // imgColl.push(theQuery);

@@ -1,0 +1,23 @@
+config:
+  target: 'http://localhost:3000'
+  phases:
+    - duration: 60
+      arrivalRate: 1000
+  processor: "./pawRNGtillery.js"
+  # payload:
+  #   path: "./pawtillery.csv" --ATTEMPTED USE OF CSV TO INCREASE TESTING SPEED, DID NOT WORK.
+  #   fields:
+  #     - "rngId"
+  # variables:
+  #   validIds:
+  #     - [1, 20, 4000, 24601, 1234567, 2345678, 7654321, 8765432, 10000000]
+scenarios:
+  - name: "all main data test"
+    flow:
+      - loop:
+        - function: "randomIDGen"
+        - get:
+            url: "/listings/{{ rngId }}/details"
+        - get:
+            url: "/listings/{{ rngId }}/photos"
+        count: 1
