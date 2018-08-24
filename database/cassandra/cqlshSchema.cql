@@ -1,8 +1,8 @@
--- DROP KEYSPACE IF EXISTS pawstel_gallery_service;
+DROP KEYSPACE IF EXISTS pawstel_gallery_service;
 
 -- CREATE KEYSPACE pawstel_gallery_service WITH replication = {'class':'SimpleStrategy','replication_factor':1};
 
-USE pawstel_gallery_service;
+-- USE pawstel_gallery_service;
 
 -- CREATE TABLE photo_listings (
 --   id INT PRIMARY KEY,

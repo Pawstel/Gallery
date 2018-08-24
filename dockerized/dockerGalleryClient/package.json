@@ -10,7 +10,7 @@
   "scripts": {
     "react-dev": "webpack -d --watch",
     "test": "jest --coverage",
-    "start": "nodemon server/server.js",
+    "start": "node server/server.js",
     "delint": "eslint --fix **/*.js **/*.jsx"
   },
   "dependencies": {

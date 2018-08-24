@@ -1,15 +1,5 @@
 \timing
 
-DROP DATABASE IF EXISTS pawstel_gallery_service;
-DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS lists CASCADE;
-DROP TABLE IF EXISTS listings CASCADE;
-DROP TABLE IF EXISTS listings_lists CASCADE;
-DROP TABLE IF EXISTS listing_photos CASCADE;
-
-CREATE DATABASE pawstel_gallery_service;
-
-
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   user_name VARCHAR(30) NOT NULL,
@@ -47,11 +37,11 @@ CREATE TABLE listing_photos (
   photo_listing_id INTEGER NOT NULL --REFERENCES listings(id)
 );
 
-copy users (user_name, user_photo_url) from '/csvFolder/users/data1.csv' DELIMITERS ',' CSV;
-copy lists (list_name, list_user_id) from '/csvFolder/lists/data1.csv' DELIMITERS ',' CSV;
-copy listings (listing_name, listing_review_average, listing_review_total, listing_host_name, listing_address, listing_host_photo_url, listing_description, listing_space_description, listing_neighborhood_description) from '/csvFolder/listings/alldata.csv' DELIMITERS ',' CSV;
-copy listings_lists (listing_id, list_id) from '/csvFolder/listing_lists/data1.csv' DELIMITERS ',' CSV;
-copy listing_photos (photo_description, photo_url, photo_listing_id) from '/csvFolder/listing_photos/data1.csv' DELIMITERS '|' CSV;
+\copy users (user_name, user_photo_url) from '/csvFolder/users/data1.csv' DELIMITERS ',' CSV;
+\copy lists (list_name, list_user_id) from '/csvFolder/lists/data1.csv' DELIMITERS ',' CSV;
+\copy listings (listing_name, listing_review_average, listing_review_total, listing_host_name, listing_address, listing_host_photo_url, listing_description, listing_space_description, listing_neighborhood_description) from '/csvFolder/listings/alldata.csv' DELIMITERS ',' CSV;
+\copy listings_lists (listing_id, list_id) from '/csvFolder/listing_lists/data1.csv' DELIMITERS ',' CSV;
+\copy listing_photos (photo_description, photo_url, photo_listing_id) from '/csvFolder/listing_photos/data1.csv' DELIMITERS '|' CSV;
 
 ALTER TABLE lists ADD CONSTRAINT user_fk FOREIGN KEY (list_user_id) REFERENCES users (id) MATCH FULL;
 ALTER TABLE listings_lists ADD CONSTRAINT list_fk FOREIGN KEY (list_id) REFERENCES lists (id) MATCH FULL;

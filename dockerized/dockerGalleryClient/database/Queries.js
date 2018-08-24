@@ -1,13 +1,14 @@
 // model make queries to the hero database
 // const connection = require('./index.js');
 
-const connection = require('pg-promise')({promiseLib:require('bluebird')})({
-  host: process.env.RDS_HOSTNAME || 'localhost',
-  user: process.env.RDS_USERNAME || 'pawstel',
-  password: process.env.RDS_PASSWORD || 'pawstelGallery',
-  database: 'pawstel_gallery_service'
-});
-
+// const connection = require('pg-promise')({promiseLib:require('bluebird')})({
+//   host: 'http://ec2-54-183-215-37.us-west-1.compute.amazonaws.com:5432',
+//   user: 'pawstel',
+//   password: 'pawstelGallery',
+//   database: 'pawstel_gallery_service'
+// });
+const pgp = require('pg-promise')();
+const connection = pgp('postgres://pawstel:pawstelGallery@54.183.215.37:5432/pawstel_gallery_service');
 
 
 const getListingPhotos = (listingId, whenGotten) => {

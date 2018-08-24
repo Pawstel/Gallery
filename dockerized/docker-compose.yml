@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  pawstel_gallery_client:
+    # build: dockerGalleryClient/
+    image: nolsky/pawstel_gallery:ver2
+    depends_on:
+      # - "pawstel_gallery_db"
+      - "pawstel_gallery_redis"
+    restart: always
+    ports:
+      - "3000:3000"
+  # pawstel_gallery_db:
+  #   image: nolsky/pawstel_gallery_db:ver1
+  #   ports:
+  #     - "5432:5432"
+  #   environment:
+  #     - POSTGRES_USER=pawstel
+  #     - POSTGRES_PASSWORD=pawstelGallery
+  #     - POSTGRES_DB=pawstel_gallery_service
+  pawstel_gallery_redis:
+    image: redis
+    restart: always
+    ports:
+      - "6379:6379"
